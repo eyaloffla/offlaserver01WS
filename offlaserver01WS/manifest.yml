@@ -1,0 +1,8 @@
+---
+applications:
+- name: offlaserver01WS
+  memory: 512M
+  host: offla02Web
+  domain: mybluemix.net
+  services:
+  - PostgreSQL by Compose-wh

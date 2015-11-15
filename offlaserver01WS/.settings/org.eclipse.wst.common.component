@@ -3,7 +3,7 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
-        <dependent-module archiveName="offla02JPA.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/offla02JPA/offla02JPA">
+        <dependent-module archiveName="offla03JPA.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/offla03JPA/offla03JPA">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="offlaserver01WS"/>

@@ -3,7 +3,7 @@
 	<name>offlaserver01WS</name>
 	<comment></comment>
 	<projects>
-		<project>offla02JPA</project>
+		<project>offla03JPA</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

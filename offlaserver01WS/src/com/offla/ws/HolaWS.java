@@ -16,7 +16,7 @@ import com.offla.services.ICellarixTxnLocal;
 
 @Stateless
 @LocalBean
-@Path("/holas")
+@Path("/installws")
 public class HolaWS  {
 	
 	@EJB

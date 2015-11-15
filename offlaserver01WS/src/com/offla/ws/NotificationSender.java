@@ -1,59 +1,56 @@
 package com.offla.ws;
 
-
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
-
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class HolaWSClient {
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class NotificationSender
+ */
+@WebServlet("/NotificationSender")
+public class NotificationSender extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	
 	 protected static final Logger logger =
 		      Logger.getLogger(HolaWSClient.class.getName());
 	 
-   protected static final String UTF8 = "UTF-8";
+  protected static final String UTF8 = "UTF-8";
 	 
 	private final String key = "AIzaSyAS8uZmvqW0RElYSIG6HXGsIzzK-aLrjoM";
-	
-	public static void main(String[] args) throws IOException {
-       /* Client c = Client.create();
-        WebResource resource = c.resource("http://localhost:9080/offlaserver01WS/rest/holas/otherurl");
-        String response = resource.get(String.class);
-        System.out.println("Client say: " + response);
-        */
-		 HolaWSClient hc = new HolaWSClient();
-		 hc.post("https://gcm-http.googleapis.com/gcm/send", "application/json", "Shalom 01" );
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public NotificationSender() {
+        super();
+        // TODO Auto-generated constructor stub
     }
-	
-	/*
-	private static void sender() throws IOException{
-		
-		final String apiKey = "AIzaSyAS8uZmvqW0RElYSIG6HXGsIzzK-aLrjoM";
 
-		//To make http connection to gcm using following code
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		post("https://gcm-http.googleapis.com/gcm/send", "application/json", "Shalom 01" );
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
-		 URL url = new URL("https://gcm-http.googleapis.com/gcm/send");
-		        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		        conn.setDoOutput(true);
-		        conn.setRequestMethod("POST");
-		        conn.setRequestProperty("Content-Type:", "application/json");
-		        conn.setRequestProperty("Authorization:", "key="+apiKey);
-		       
-		        conn.setDoOutput(true);
-		        
-		        OutputStream out = conn.getOutputStream();
-		       // os.write(input.getBytes());
-		      //  os.flush();
-	          
-	    }
-	    */
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
 	
 	public  void post(String url, String contentType, String body)
 		      throws IOException {
