@@ -14,6 +14,8 @@ public class MyRestApplication extends Application {
         Set<Class<?>> classes = new HashSet<Class<?>>();
         classes.add(HolaWS.class);
         classes.add(GoogleTokensWS.class);
+        classes.add(NotificationSenderWS.class);
+        classes.add(NotificationSenderWSTestReceptor.class);
         return classes;
     }
 

@@ -29,5 +29,6 @@
 			<attribute name="owner.project.facets" value="jpt.jaxb"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/eyal/Documents/IBM-Bluemix/lib/asm-3.1.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

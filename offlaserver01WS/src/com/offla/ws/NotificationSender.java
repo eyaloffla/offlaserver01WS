@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class NotificationSender
- */
+
 @WebServlet("/NotificationSender")
 public class NotificationSender extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,7 +24,7 @@ public class NotificationSender extends HttpServlet {
 	 
   protected static final String UTF8 = "UTF-8";
 	 
-	private final String key = "AIzaSyAS8uZmvqW0RElYSIG6HXGsIzzK-aLrjoM";
+	//private final String key = "AIzaSyAS8uZmvqW0RElYSIG6HXGsIzzK-aLrjoM";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,9 +36,9 @@ public class NotificationSender extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	 */            
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		post("https://gcm-http.googleapis.com/gcm/send", "application/json", "Shalom 01" );
+		post("http://imfpush.ng.bluemix.net/imfpush/v1/apps/82240fb2-5219-477c-8c41-3c8f8b5ccfe1", "application/json", "Shalom 01" );
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -69,7 +67,14 @@ public class NotificationSender extends HttpServlet {
 		    conn.setFixedLengthStreamingMode(bytes.length);
 		    conn.setRequestMethod("POST");
 		    conn.setRequestProperty("Content-Type:", contentType);
-		    conn.setRequestProperty("Authorization:", "key=" + key);
+		    conn.setRequestProperty("Accept:","application/json");
+		    conn.setRequestProperty("appSecret:","58533377-2567-47db-9b5b-69237b8eb199");
+		    conn.setRequestProperty("Accept-Language:","en-US");
+		    conn.setRequestProperty("Application-Mode:","SANDBOX");
+		    //conn.setRequestProperty(":", "");
+		    
+		    
+		    //conn.setRequestProperty("Authorization:", "key=" + key);
 		    //conn.setRequestProperty("Sender", "id=offla-1117");
 		   // conn.setRequestProperty("", "");
 		    OutputStream out = conn.getOutputStream();
