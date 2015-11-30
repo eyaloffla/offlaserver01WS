@@ -12,10 +12,12 @@ public class MyRestApplication extends Application {
 	@Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<Class<?>>();
-        classes.add(HolaWS.class);
-        classes.add(GoogleTokensWS.class);
-        classes.add(NotificationSenderWS.class);
-        classes.add(NotificationSenderWSTestReceptor.class);
+          classes.add(HolaWS.class);
+       // classes.add(GoogleTokensWS.class);
+      //  classes.add(NotificationSenderWS.class);
+       // classes.add(NotificationSenderWSTestReceptor.class);
+        classes.add(NotificationSenderClient.class);
+        classes.add(NotificationSender.class);
         return classes;
     }
 

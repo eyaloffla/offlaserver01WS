@@ -1,8 +1,7 @@
 package com.offla.ws;
 
 
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
+
 
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -24,10 +23,11 @@ public class HolaWSClient {
 	 
    protected static final String UTF8 = "UTF-8";
 	 
-	private final String key = "AIzaSyAS8uZmvqW0RElYSIG6HXGsIzzK-aLrjoM";
-	private static final String url = "http://imfpush.ng.bluemix.net/imfpush/v1/apps/82240fb2-5219-477c-8c41-3c8f8b5ccfe1";
+	//private final String key = "AIzaSyAS8uZmvqW0RElYSIG6HXGsIzzK-aLrjoM";
+	private static final String url = "https://mobile.ng.bluemix.net/imfpush/v1/apps/b70335bf-cd13-4fc2-86d3-03d53ec50487/messages";
+	private static final String message01 = "{ \"message\": { \"alert\":\" This is the new app 01\"}}"; 
 	                                  
-	//private final String url = "https://gcm-http.googleapis.com/gcm/send";
+	
 	
 	public static void main(String[] args) throws IOException {
        /* Client c = Client.create();
@@ -36,9 +36,10 @@ public class HolaWSClient {
         System.out.println("Client say: " + response);
         */
 		 HolaWSClient hc = new HolaWSClient();
-		 hc.post(url, "application/json", "Shalom 01" );
-		NotificationSenderWS ns = new NotificationSenderWS();
-		System.out.println(ns.message01());
+		// hc.post(url, "application/json", message01 );
+		 NotificationSenderWS ns = new NotificationSenderWS();
+		 ns.message02();
+		// System.out.println(ns.message02());
     }
 	
 	
@@ -57,20 +58,9 @@ public class HolaWSClient {
 		    conn.setFixedLengthStreamingMode(bytes.length);
 		    conn.setRequestMethod("POST");
 		    conn.setRequestProperty("Content-Type", contentType);
-		    conn.setRequestProperty("Authorization", "key=" + key);
-		    /*
-		     * resource.queryParam("appSecret", "35e7b468-78cc-4b94-94e7-6a22841a35ec");
-		resource.queryParam("Accept-Language:","en-US");
-		resource.queryParam("Application-Mode:","SANDBOX");
-		resource.accept(MediaType.APPLICATION_JSON);
-		resource.type(MediaType.APPLICATION_JSON);
-		     * 
-		     */
-		    //conn.setRequestProperty("Sender", "id=offla-1117");
-		    conn.setRequestProperty("appSecret", "35e7b468-78cc-4b94-94e7-6a22841a35ec");
+		    conn.setRequestProperty("appSecret", "3021fa6c-5fa0-4149-ad4c-cee7160a8b34");
 		    conn.setRequestProperty("Accept-Language", "en-US");
 		    conn.setRequestProperty("Application-Mode", "SANDBOX");
-		   // conn.setRequestProperty("", "");
 		    
 		    OutputStream out = conn.getOutputStream();
 		    try {
@@ -80,7 +70,7 @@ public class HolaWSClient {
 		      int responseCode = conn.getResponseCode();
 		        System.out.println("POST Response Code :: " + responseCode);
 		 
-		        if (responseCode == HttpURLConnection.HTTP_OK) { //success
+		        if (responseCode == HttpURLConnection.HTTP_ACCEPTED) { 
 		            BufferedReader in = new BufferedReader(new InputStreamReader(
 		                    conn.getInputStream()));
 		            String inputLine;
@@ -91,7 +81,6 @@ public class HolaWSClient {
 		            }
 		            in.close();
 		 
-		            // print result
 		            System.out.println(response.toString());
 		        } else {
 		            System.out.println("POST request not worked");

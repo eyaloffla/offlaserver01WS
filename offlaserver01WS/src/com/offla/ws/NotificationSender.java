@@ -3,6 +3,7 @@ package com.offla.ws;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Level;
@@ -13,38 +14,80 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.MediaType;
 
 
 @WebServlet("/NotificationSender")
 public class NotificationSender extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	 protected static final Logger logger =
-		      Logger.getLogger(HolaWSClient.class.getName());
+	protected static final Logger logger = Logger.getLogger(HolaWSClient.class.getName());
+	private static final String url = "https://mobile.ng.bluemix.net/imfpush/v1/apps/b70335bf-cd13-4fc2-86d3-03d53ec50487/messages";
+	private static final String message01 = "{ \"message\": { \"alert\":\" Shalom 06\"}}"; 
+	protected static final String UTF8 = "UTF-8";
+  
+ 
 	 
-  protected static final String UTF8 = "UTF-8";
-	 
-	//private final String key = "AIzaSyAS8uZmvqW0RElYSIG6HXGsIzzK-aLrjoM";
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public NotificationSender() {
         super();
-        // TODO Auto-generated constructor stub
+      
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */            
+	           
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		post("http://imfpush.ng.bluemix.net/imfpush/v1/apps/82240fb2-5219-477c-8c41-3c8f8b5ccfe1", "application/json", "Shalom 01" );
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		PrintWriter out = response.getWriter();
+	//	post("https://mobile.ng.bluemix.net/imfpush/v1/apps/49500464-58f0-4178-976d-a3d0b3c61170/messages", "application/json", message01 );
+		out.println("11"); 
+		
+		
+		
+		
+		String url= "https://mobile.ng.bluemix.net/imfpush/v1/apps/b70335bf-cd13-4fc2-86d3-03d53ec50487/messages";
+	     String message01= "{ \"message\": { \"alert\":\" Hi There whats up\"}}";
+
+	     org.apache.wink.client.ClientConfig clientConfig= new org.apache.wink.client.ClientConfig();
+
+	     org.apache.wink.client.RestClient client= new org.apache.wink.client.RestClient(clientConfig);
+	     org.apache.wink.client.Resource resource= client.resource(url);
+	     resource.accept("application/json");
+	     resource.acceptLanguage("en-US");
+	     resource.contentType(MediaType.APPLICATION_JSON);
+	     resource.header("appSecret", "3021fa6c-5fa0-4149-ad4c-cee7160a8b34");
+	     resource.header("Application-Mode", "SANDBOX");
+	    
+	     org.apache.wink.client.ClientResponse resp= resource.post(message01);
+	     String msg= (String) resp.getMessage();
+	     System.out.println(msg);
+	     System.out.println(resp.getStatusCode());
+	     System.out.println(resp.getEntity(String.class));
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//sendNotification();
+		//HolaWSClient hc = new HolaWSClient();
+		// hc.post(url, "application/json", message01 );
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	//	NotificationSenderClient nsc = new NotificationSenderClient();
+	//	nsc.sendNotification();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
@@ -66,17 +109,13 @@ public class NotificationSender extends HttpServlet {
 		    conn.setUseCaches(false);
 		    conn.setFixedLengthStreamingMode(bytes.length);
 		    conn.setRequestMethod("POST");
-		    conn.setRequestProperty("Content-Type:", contentType);
-		    conn.setRequestProperty("Accept:","application/json");
-		    conn.setRequestProperty("appSecret:","58533377-2567-47db-9b5b-69237b8eb199");
-		    conn.setRequestProperty("Accept-Language:","en-US");
-		    conn.setRequestProperty("Application-Mode:","SANDBOX");
-		    //conn.setRequestProperty(":", "");
+		    conn.setRequestProperty("Content-Type", contentType);
+		    conn.setRequestProperty("Accept","application/json");
+		    conn.setRequestProperty("appSecret","3021fa6c-5fa0-4149-ad4c-cee7160a8b34");
+		    conn.setRequestProperty("Accept-Language","en-US");
+		    conn.setRequestProperty("Application-Mode","SANDBOX");
 		    
-		    
-		    //conn.setRequestProperty("Authorization:", "key=" + key);
-		    //conn.setRequestProperty("Sender", "id=offla-1117");
-		   // conn.setRequestProperty("", "");
+		   
 		    OutputStream out = conn.getOutputStream();
 		    try {
 		      out.write(bytes);
@@ -100,5 +139,30 @@ public class NotificationSender extends HttpServlet {
 		      }
 		    }
 		  }
+	 
+	 private String sendNotification(){
+			
+		 String url= "https://mobile.ng.bluemix.net/imfpush/v1/apps/b70335bf-cd13-4fc2-86d3-03d53ec50487/messages";
+	     String message01= "{ \"message\": { \"alert\":\" Hi There whats up\"}}";
+
+	     org.apache.wink.client.ClientConfig clientConfig= new org.apache.wink.client.ClientConfig();
+
+	     org.apache.wink.client.RestClient client= new org.apache.wink.client.RestClient(clientConfig);
+	     org.apache.wink.client.Resource resource= client.resource(url);
+	     resource.accept("application/json");
+	     resource.acceptLanguage("en-US");
+	     resource.contentType(MediaType.APPLICATION_JSON);
+	     resource.header("appSecret", "3021fa6c-5fa0-4149-ad4c-cee7160a8b34");
+	     resource.header("Application-Mode", "SANDBOX");
+	    
+	     org.apache.wink.client.ClientResponse resp= resource.post(message01);
+	     String msg= (String) resp.getMessage();
+	     System.out.println(msg);
+	     System.out.println(resp.getStatusCode());
+	     System.out.println(resp.getEntity(String.class));
+	     
+	     return msg;
+	     
+		}
 
 }
