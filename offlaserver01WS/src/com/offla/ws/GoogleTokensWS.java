@@ -41,7 +41,7 @@ public class GoogleTokensWS {
 		return "the token was inserted successfully ! " ;
 	}
 	
-	@Path("tokens")
+	@Path("/tokens")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
     public List<GoogleIds> getAllGoogleIds(){

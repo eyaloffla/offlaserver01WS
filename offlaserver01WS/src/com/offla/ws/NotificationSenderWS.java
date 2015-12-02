@@ -14,11 +14,11 @@ import javax.ws.rs.core.MediaType;
 
 import com.ibm.json.java.JSONObject;
 import com.offla.entities.GoogleIds;
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
-import com.sun.jersey.api.client.filter.LoggingFilter;
+//import com.sun.jersey.api.client.Client;
+//import com.sun.jersey.api.client.WebResource;
+//import com.sun.jersey.api.client.config.ClientConfig;
+//import com.sun.jersey.api.client.config.DefaultClientConfig;
+//import com.sun.jersey.api.client.filter.LoggingFilter;
 
 
 
@@ -36,14 +36,16 @@ public class NotificationSenderWS {
 	
 	@Path("/callclient")
     @GET
-	public void callClient(){
-		message02();
+	public String callClient(){
+		
+		//message02();
+		return "call client";
 	}
 	
 	
 	 public String message02(){
 		 
-		 String url = "https://mobile.ng.bluemix.net/imfpush/v1/apps/b70335bf-cd13-4fc2-86d3-03d53ec50487/messages";
+		/* String url = "https://mobile.ng.bluemix.net/imfpush/v1/apps/b70335bf-cd13-4fc2-86d3-03d53ec50487/messages";
 		 String message01 = "{ \"message\": { \"alert\":\" Hi There whats up\"}}";
 		 Client client = Client.create();
 		 WebResource resource = client.resource(url);                               
@@ -55,8 +57,9 @@ public class NotificationSenderWS {
 		 resource.header("appSecret","3021fa6c-5fa0-4149-ad4c-cee7160a8b34");
 		 resource.header("Accept-Language", "en-US");
 		 resource.header("Application-Mode","SANDBOX");
+		 */
 		 
-		 return resource.post(String.class, message01);
+		 return    "message";                      //resource.post(String.class, message01);
 
 		 
 	 }
@@ -81,7 +84,7 @@ public class NotificationSenderWS {
 		
 		
 		//ClientConfig config = new DefaultClientConfig();
-	    Client client = Client.create();
+	   /* Client client = Client.create();
 		WebResource resource =  client.resource(url);                                     //Client.create(new DefaultClientConfig()).resource(url);
 		resource.queryParam("appSecret:", "58533377-2567-47db-9b5b-69237b8eb199");
 		resource.queryParam("Accept-Language:","en-US");
@@ -96,9 +99,9 @@ public class NotificationSenderWS {
 		 //conn.setRequestProperty("AString.classccept-Language:","en-US");
 		   // conn.setRequestProperty("Application-Mode:","SANDBOX");
 		
-		return response;
+		return response;*/
 		//
-		//return "hola";
+		return "hola";
 		
 		
 	}
