@@ -22,8 +22,6 @@ public class HolaWS  {
 	@EJB
 	ICellarixTxnLocal bean;
 	
-	@EJB
-	IAppfr1Service service;
 	
 	@GET
 	@Path("/hi")
@@ -38,14 +36,7 @@ public class HolaWS  {
 		return "the id is: " + id;
 	}
 	
-	@GET
-	@Path("/ispersonondb")
-	//@Produces("application/jason")
-	public String isPersonOnDataBase(){
-		
-		System.out.println(" The person is on database: " + service.isPersonInDB(317755361));
-		return " The person is on database: " + service.isPersonInDB(317755361) ;                     
-	}
+
 	
 	@Path("/otherurl")
 	@GET

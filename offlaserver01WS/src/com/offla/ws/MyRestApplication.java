@@ -14,10 +14,10 @@ public class MyRestApplication extends Application {
         Set<Class<?>> classes = new HashSet<Class<?>>();
           classes.add(HolaWS.class);
         classes.add(GoogleTokensWS.class);
-        classes.add(NotificationSenderWS.class);
         classes.add(NotificationSenderWSTestReceptor.class);
         classes.add(NotificationSenderClient.class);
         classes.add(NotificationSender.class);
+        classes.add(IsPersonOnDB.class);
       //  classes.add(SimpleWS.class);
         return classes;
     }

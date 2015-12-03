@@ -37,8 +37,7 @@ public class HolaWSClient {
         */
 		 HolaWSClient hc = new HolaWSClient();
 		// hc.post(url, "application/json", message01 );
-		 NotificationSenderWS ns = new NotificationSenderWS();
-		 ns.message02();
+		
 		// System.out.println(ns.message02());
     }
 	
