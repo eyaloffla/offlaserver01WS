@@ -8,6 +8,7 @@ public class Util {
 	public static final String BOOLEAN_TRUE = "1";
 	public static final String BOOLEAN_FALSE = "0";
 	
+	
 	public static int stringToInt(String id) {
 		int idI = 0;
 		if(StringUtils.isNoneBlank(id)){
@@ -17,6 +18,17 @@ public class Util {
 			}
 		}
 		return idI;
+	}
+	
+	
+	public static boolean isBlankNot(String s){
+		boolean b = Boolean.FALSE;
+		
+		if(!"".equals(s) && s != null & !" ".equals(s)){
+			b = Boolean.TRUE;
+		}
+		
+		return b;
 	}
 	
 }
