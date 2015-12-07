@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.offla.services.IAppfr1Service;
 import com.offla.utils.Util;
+import com.sun.org.apache.xml.internal.serializer.utils.StringToIntTable;
 
 
 @Stateless
@@ -31,10 +32,11 @@ public class IsPersonOnDB {
 		String result = Util.BOOLEAN_FALSE;
 		
 		if(StringUtils.isNoneBlank(finalNumber)){
-			finalNumberI = idI + birthdayI;
+			finalNumberI = Util.stringToInt(finalNumber);
 		}else{
 			idI = Util.stringToInt(id);
 			birthdayI = Util.stringToInt(birthDay);
+			finalNumberI = idI + birthdayI;
 		}
 		
 	
