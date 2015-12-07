@@ -20,6 +20,7 @@ public class Util {
 		return idI;
 	}
 	
+	
 	public static boolean isBlankNot(String s){
 		boolean b = Boolean.FALSE;
 		
