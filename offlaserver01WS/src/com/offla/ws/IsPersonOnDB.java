@@ -25,27 +25,27 @@ public class IsPersonOnDB {
 	@Path("/ispersonondb/{id}/{birthDay}/{finalNumber}")                               
 	@Produces("application/json")
 	public String isPersonOnDataBase(@PathParam(value="id") String id, @PathParam(value="birthDay") String birthDay, @PathParam(value="finalNumber") String finalNumber){
-		int idI = 0;
-		int birthdayI = 0;
-		int finalNumberI = 0;
+		long idL = 0;
+		long birthdayL = 0;
+		long finalNumberL = 0;
 		boolean resultB = false;
 		String result = Util.BOOLEAN_FALSE;
 		
-		if(StringUtils.isNoneBlank(finalNumber)){
-			finalNumberI = Util.stringToInt(finalNumber);
+		if(StringUtils.isNotBlank(finalNumber) && !"0".equals(finalNumber)){
+			finalNumberL = Util.stringToLong(finalNumber);
 		}else{
-			idI = Util.stringToInt(id);
-			birthdayI = Util.stringToInt(birthDay);
-			finalNumberI = idI + birthdayI;
+			idL = Util.stringToLong(id);
+			birthdayL = Util.stringToLong(birthDay);
+			finalNumberL = idL + birthdayL;
 		}
 		
 	
-		resultB = service.isPersonInDB(finalNumberI);
+		resultB = service.isPersonInDB(finalNumberL);
 		
-		if(Util.BOOLEAN_TRUE.equals(resultB)){
+		if(resultB){
 			result = Util.BOOLEAN_TRUE;
 		}
-		System.out.println(" The person is on database: " + service.isPersonInDB(finalNumberI));
+		System.out.println(" The person is on database: " + service.isPersonInDB(finalNumberL));
 		
 		return result ;                     
 	}
