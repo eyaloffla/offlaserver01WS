@@ -1,4 +1,4 @@
-package com.offla.ws;
+package com.offla.test;
 
 import java.io.IOException;
 

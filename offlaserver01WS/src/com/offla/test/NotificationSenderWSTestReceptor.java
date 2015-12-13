@@ -1,4 +1,4 @@
-package com.offla.ws;
+package com.offla.test;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;

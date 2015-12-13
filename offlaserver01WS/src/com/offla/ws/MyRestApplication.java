@@ -5,6 +5,10 @@ import java.util.Set;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
+import com.offla.test.HolaWS;
+import com.offla.test.NotificationSender;
+import com.offla.test.NotificationSenderClient;
+import com.offla.test.NotificationSenderWSTestReceptor;
 
 @ApplicationPath("/rest")
 public class MyRestApplication extends Application {
@@ -18,6 +22,7 @@ public class MyRestApplication extends Application {
         classes.add(NotificationSenderClient.class);
         classes.add(NotificationSender.class);
         classes.add(IsPersonOnDB.class);
+        
       //  classes.add(SimpleWS.class);
         return classes;
     }
