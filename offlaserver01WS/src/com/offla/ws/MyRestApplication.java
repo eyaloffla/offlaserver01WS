@@ -22,6 +22,7 @@ public class MyRestApplication extends Application {
         classes.add(NotificationSenderClient.class);
         classes.add(NotificationSender.class);
         classes.add(IsPersonOnDB.class);
+        classes.add(IsIPAproved.class);
         
       //  classes.add(SimpleWS.class);
         return classes;
